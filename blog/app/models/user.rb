@@ -12,8 +12,6 @@
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
-
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, :presence => true,
@@ -33,6 +31,12 @@ class User < ActiveRecord::Base
  # True if submitted password matches user's hashed password
  def has_password?(submitted_password)
    self.encrypted_password == encrypt(submitted_password)
+ end
+
+ def self.authenticate(email, submitted_password)
+   user = find_by_email(email)
+   return nil if user.nil?
+   return user if user.has_password?(submitted_password)
  end
 
  private
