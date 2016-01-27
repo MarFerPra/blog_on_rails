@@ -1,0 +1,19 @@
+<h1> User profile </h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Hashed password:</strong>
+  <%= @user.salt %>
+</p>
+
+<%= link_to 'Edit profile', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
