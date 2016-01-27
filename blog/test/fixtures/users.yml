@@ -1,11 +1,10 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  commenter  :string
-#  body       :text
-#  article_id :integer
+#  name       :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,11 +12,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  commenter: MyString
-  body: MyText
-  article_id: 
+  name: MyString
+  email: MyString
 
 two:
-  commenter: MyString
-  body: MyText
-  article_id: 
+  name: MyString
+  email: MyString
