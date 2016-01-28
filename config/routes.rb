@@ -5,17 +5,16 @@ Rails.application.routes.draw do
 
   get 'main/index'
 
+  get '/signup', :to => 'users#new'
+  get '/signin', :to => 'sessions#new'
+  get '/signout', :to => 'sessions#destroy'
+
   resources :articles do
     resources :comments
   end
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-
-  match '/signup', :to => 'users#new'
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
-  
 
 end
   # The priority is based upon order of creation: first created -> highest priority.
