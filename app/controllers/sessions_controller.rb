@@ -8,8 +8,12 @@ class SessionsController < ApplicationController
 
     if user.nil?
       # Mensaje de error
+      flash.now[:error] = "Invalid email/password combination."
+      render 'new'
     else
       # Inicio de sesion y redireccion al perfil del usuario
+      sign_in user
+      redirect_to user
     end
   end
 

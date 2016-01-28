@@ -1,6 +1,11 @@
 <h1>Sign in</h1>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
+
+<% flash.each do |key, value| %>
+  <p>  <%= value %> </p>
+<% end %>
+
 <p>
   <%= f.label :email %> <br/>
   <%= f.text_field :email %>
