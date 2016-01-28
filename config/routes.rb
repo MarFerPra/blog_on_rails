@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'users/new'
 
   get 'main/index'
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+  
 
 end
   # The priority is based upon order of creation: first created -> highest priority.

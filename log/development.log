@@ -4718,3 +4718,40 @@ Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde45
 
 
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-28 09:29:36 +0100
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36m (387.0ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author" varchar) [0m
+  [1m[35m (211.1ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commenter" varchar, "body" text, "article_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (259.9ms)[0m  CREATE  INDEX "index_comments_on_article_id" ON "comments" ("article_id")
+  [1m[36m (210.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "encrypted_password" varchar, "salt" varchar) [0m
+  [1m[35m (312.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (280.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (190.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (378.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127111604')
+  [1m[36m (345.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160126130709')[0m
+  [1m[35m (400.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160126115330')
+  [1m[36m (381.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160127101511')[0m
+  [1m[35m (256.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127104633')
+  [1m[36m (278.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160127110126')[0m
+  [1m[35m (390.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127091920')
+  [1m[36m (267.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "author" varchar) [0m
+  [1m[35m (256.9ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commenter" varchar, "body" text, "article_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (488.6ms)[0m  CREATE  INDEX "index_comments_on_article_id" ON "comments" ("article_id")
+  [1m[36m (334.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "encrypted_password" varchar, "salt" varchar) [0m
+  [1m[35m (346.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (500.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (432.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (377.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127111604')
+  [1m[36m (424.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160126130709')[0m
+  [1m[35m (366.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160126115330')
+  [1m[36m (312.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160127101511')[0m
+  [1m[35m (223.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127104633')
+  [1m[36m (300.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160127110126')[0m
+  [1m[35m (280.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160127091920')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "articles"
