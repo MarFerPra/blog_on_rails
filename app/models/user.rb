@@ -15,6 +15,7 @@ require 'digest'
 
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
+  #attr_writer :encrypted_password
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -55,7 +56,7 @@ class User < ActiveRecord::Base
  private
   def encrypt_password
     self.salt = make_salt if new_record?
-    self.encryped_password = encrypt(self.password)
+    self.encrypted_password = encrypt(self.password)
   end
 
   def encrypt(string)
