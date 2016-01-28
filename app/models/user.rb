@@ -42,8 +42,16 @@ class User < ActiveRecord::Base
    return user if user.has_password?(submitted_password)
  end
 
+ def self.authenticate_with_salt(id, cookie_salt)
+   user = find_by_id(id)
+   # Si user no es null y
+   # user.salt equals la salt de la cookie -> devuelve el user else devuelve nil
+   (user && user.salt == cookie_salt) ? user : nil
+
+ end
+
  #TODO: make salt atrib. private eventually.
- 
+
  private
   def encrypt_password
     self.salt = make_salt if new_record?
