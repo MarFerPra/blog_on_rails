@@ -11,7 +11,7 @@
 #  salt               :string
 #
 
-class UsersController < ApplicationController
+class Users::UsersController < ApplicationController
 
   def index
     @users = User.all

@@ -10,7 +10,7 @@
 #  author     :string
 #
 
-class ArticlesController < ApplicationController
+class Articles::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
 # TRAILBLAZED
   def create
     run Article::Create do |op|
-      return redirect_to op.model
+      redirect_to op.model
     end
     render 'new'
   end
