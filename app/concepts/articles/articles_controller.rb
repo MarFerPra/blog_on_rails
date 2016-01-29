@@ -31,7 +31,7 @@ class Articles::ArticlesController < ApplicationController
 # TRAILBLAZED
   def create
     run Article::Create do |op|
-      redirect_to op.model
+      return redirect_to(article_path op.model)
     end
     render 'new'
   end
