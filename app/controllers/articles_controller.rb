@@ -10,7 +10,7 @@
 #  author     :string
 #
 
-class Articles::ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all

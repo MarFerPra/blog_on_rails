@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Comments::CommentsController < ApplicationController
+class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
