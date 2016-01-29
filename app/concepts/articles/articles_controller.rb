@@ -28,14 +28,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+# TRAILBLAZED
   def create
-    @article = Article.new(article_params)
-
-    if @article.save
-      redirect_to @article
-    else
-      render 'new'
+    run Article::Create do |op|
+      return redirect_to op.model
     end
+    render 'new'
   end
 
   def update
@@ -53,11 +51,6 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to articles_path
-  end
-
-private
-  def article_params
-    params.require(:article).permit(:title,:text,:author)
   end
 
 end
