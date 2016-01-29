@@ -9,3 +9,13 @@ Developed using as reference "Ruby on Rails 3 Tutorial" (Author Michael Hartl) a
 
 (Check `Gemfile` for information about the gemset.)
 
+# On branch "trailblazer":
+
+Here you can check the migration of the projecto to Trailblazer's architecture.
+Gemfile has been modified with:
+
+```
+gem "trailblazer"
+gem "trailblazer-rails"
+gem "cells"
+```
