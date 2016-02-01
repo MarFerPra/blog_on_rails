@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length => {:within => 6..20}
 
+
+# Callback -> ¿?
  before_save :encrypt_password
 
  # True if submitted password matches user's hashed password
