@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-# Trailblazed
+# Trailblazin'
   def create
     run Article::Create do |op|
       return redirect_to (op.article)
