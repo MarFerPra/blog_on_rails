@@ -28,29 +28,25 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-# TRAILBLAZER
+# Trailblazed
   def create
     run Article::Create do |op|
-      redirect_to (op.article)
+      return redirect_to (op.article)
     end
+    render 'new'
   end
 
   def update
-    @article = Article.find(params[:id])
-
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render 'edit'
+    run Article::Update do |op|
+      return redirect_to (op.article)
     end
+    render 'edit'
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-
+    run Article::Destroy
     redirect_to articles_path
   end
-  
+
 
 end
