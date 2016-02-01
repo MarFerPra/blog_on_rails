@@ -1,20 +1,27 @@
-class Article::Create < Trailblazer::Operation
+class Article < ActiveRecord::Base
+  has_many :comments, dependent: :destroy
 
-  contract do
-    property :title, validates: { presence: true,
-                               length: {minimum: 5}}
-  end
+  class Create < Trailblazer::Operation
+    attr_accessor :article
 
-    # OPERATION CODE GOES HERE
-  def process(params)
-    @article = Article.new(article_params(params))
-    validate(article_params(params),@article) do |f|
-      f.save
+    contract do
+      property :title, validates: { presence: true,
+                                 length: {minimum: 5}}
     end
+
+      # OPERATION CODE GOES HERE
+    def process(p)
+      params = article_params(p)
+      @article = Article.new(params)
+      validate(params,@article) do |f|
+        f.save
+      end
+    end
+
+    private
+    def article_params(params)
+      params.require(:article).permit(:title,:text,:author)
+    end
+
   end
 end
-
-private
-  def article_params(params)
-    params.require(:article).permit(:title,:text,:author)
-  end

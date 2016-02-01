@@ -28,12 +28,11 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-# TRAILBLAZED
+# TRAILBLAZER
   def create
     run Article::Create do |op|
-      return redirect_to(article_path op.model)
+      redirect_to (op.article)
     end
-    render 'new'
   end
 
   def update
@@ -52,5 +51,6 @@ class ArticlesController < ApplicationController
 
     redirect_to articles_path
   end
+  
 
 end
