@@ -26,18 +26,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      sign_in @user
-      redirect_to @user
-    else
-      render 'new'
+    run User::Create do |op|
+      sign_in op.user
+      return redirect_to (op.user)
     end
-  end
-
-private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    render 'new'
   end
 
 end

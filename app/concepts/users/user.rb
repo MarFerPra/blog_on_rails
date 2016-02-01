@@ -73,4 +73,8 @@ class User < ActiveRecord::Base
       Digest::SHA2.hexdigest(string)
   end
 
+  def self.user_params(params)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
 end
