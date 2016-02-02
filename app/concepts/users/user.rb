@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
                        :length => {:within => 6..20}
 
 
-# Callback -> ¿?
+# Callback -> No need, since im not using trailblazer architecture on auth.
  before_save :encrypt_password
 
  # True if submitted password matches user's hashed password
@@ -39,22 +39,16 @@ class User < ActiveRecord::Base
    self.encrypted_password == encrypt(submitted_password)
  end
 
- def self.authenticate(email, submitted_password)
-   user = find_by_email(email)
-   return nil if user.nil?
-   return user if user.has_password?(submitted_password)
- end
-
  def self.authenticate_with_salt(id, cookie_salt)
    user = find_by_id(id)
    # Si user no es null y
    # user.salt equals la salt de la cookie -> devuelve el user else devuelve nil
    (user && user.salt == cookie_salt) ? user : nil
-
  end
 
  #TODO: make salt atrib. private eventually.
 
+# NO trailblazable
  private
   def encrypt_password
     self.salt = make_salt if new_record?

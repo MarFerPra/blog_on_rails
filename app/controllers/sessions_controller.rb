@@ -3,17 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:session][:email],
-    params[:session][:password])
-
-    if user.nil?
-      # Mensaje de error
-      flash.now[:error] = "Invalid email/password combination."
-      render 'new'
-    else
-      # Inicio de sesion y redireccion al perfil del usuario
-      sign_in user
-      redirect_to user
+    run User::Authenticate do |op|
+      if(op.user.nil?)
+        flash.now[:error] = "Invalid email/password combination."
+        render 'new'
+      else
+        sign_in op.user
+        redirect_to op.user
+      end
     end
   end
 
