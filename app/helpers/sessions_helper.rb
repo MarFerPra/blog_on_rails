@@ -15,7 +15,7 @@ module SessionsHelper
   end
 
   def current_user
-    # Or equals operator. Si current_user undefined -> llama a user_from_remember_token
+    #Or equals operator. Si current_user undefined -> llama a user_from_remember_token
     @current_user ||= user_from_remember_token
   end
 
