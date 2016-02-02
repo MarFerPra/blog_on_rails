@@ -14,22 +14,8 @@
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password
   #attr_writer :encrypted_password
-
-  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-  validates :name, :presence => true,
-                   :length => {:maximum => 15, :minimum => 4}
-  validates :email, :presence => true,
-                    :format => {:with => email_regex},
-                    :uniqueness => { :case_sensitive => false }
-
-                    # Aqui se genera el atributo virtual password_confirmation (true)
-  validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => {:within => 6..20}
-
 
 # Callback -> No need, since im not using trailblazer architecture on auth.
  before_save :encrypt_password
@@ -48,7 +34,7 @@ class User < ActiveRecord::Base
 
  #TODO: make salt atrib. private eventually.
 
-# NO trailblazable
+# Untrailblazable
  private
   def encrypt_password
     self.salt = make_salt if new_record?
@@ -68,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def self.user_params(params)
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password)
   end
 
 end
