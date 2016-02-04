@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'main#index'
   
   get 'sessions/new'
 
@@ -7,8 +8,8 @@ Rails.application.routes.draw do
   get 'main/index'
 
   get '/signup', :to => 'users#new'
-  get '/signin', :to => 'sessions#new'
-  get '/signout', :to => 'sessions#destroy'
+  get '/login', :to => 'sessions#new'
+  get '/logout', :to => 'sessions#destroy'
   get '/sessions', :to => 'sessions#new'
 
   resources :articles do
@@ -23,7 +24,6 @@ end
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

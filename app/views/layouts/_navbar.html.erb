@@ -1,0 +1,54 @@
+<style>
+.navbar {
+    margin-bottom: 0;
+    background-color: #00bfff;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #00bfff !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.navbar-brand {
+  font-size: 19px;
+}
+</style>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+        <a class="navbar-brand" href="/login"><%= "Welcome, "+current_user.name if !current_user.nil?  %></a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="logout">Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
