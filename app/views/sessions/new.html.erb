@@ -5,7 +5,36 @@
   <h2>Login</h2>
 </div>
 
-<%= form_for(:session, :url => sessions_path) do |f| %>
+<div class="container-fluid bg-grey">
+  <h2 class="text-center">Account information</h2>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Password" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Password Confirmation" type="email" required>
+            </div>
+            </div>
+              <div class="col-sm-6 center-block">
+                <button class="btn btn-default" type="submit">Send</button>
+              </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+  </div>
+</div>
+    <%= form_for(:session, :url => sessions_path) do |f| %>
 
 <% flash.each do |key, value| %>
   <p>  <%= value %> </p>
