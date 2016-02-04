@@ -8,6 +8,7 @@
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
+    font-family: Montserrat, sans-serif;
 }
 
 .navbar li a, .navbar .navbar-brand {
@@ -39,7 +40,14 @@
         <span class="icon-bar"></span>
       </button>
 
-        <a class="navbar-brand" href="/login"><%= "Welcome, "+current_user.name if !current_user.nil?  %></a>
+        <a class="navbar-brand"
+          <% if !current_user.nil? %>
+                  <% link = "Welcome, "+current_user.name %>
+                  <%= link_to link, '/main/index' %>
+                  <% else %>
+                  <%= link_to 'New? Sign up!', '/signup' %>
+                <% end %>
+        </a>
 
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -47,7 +55,12 @@
         <li><a href="/articles">Articles</a></li>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/users">Users</a></li>
-        <li><a href="logout">Log out</a></li>
+        <li> <% if current_user.nil? %>
+                <%= link_to 'Log in', '/login' %>
+                <% else %>
+                <%= link_to 'Log out', '/logout' %>
+              <% end %>
+        </li>
       </ul>
     </div>
   </div>
