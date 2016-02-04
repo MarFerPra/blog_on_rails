@@ -40,13 +40,18 @@
         <span class="icon-bar"></span>
       </button>
 
+
         <a class="navbar-brand"
-          <% if !current_user.nil? %>
-                  <% link = "Welcome, "+current_user.name %>
-                  <%= link_to link, '/main/index' %>
-                  <% else %>
-                  <%= link_to 'New? Sign up!', '/signup' %>
-                <% end %>
+        <% if '/main/index' == request.env['PATH_INFO'] %>
+          <%= link_to 'New? Sign up!', '/signup' %>
+          <% else %>
+            <% if !current_user.nil? %>
+                    <% link = "Welcome, "+current_user.name %>
+                    <%= link_to link, '/' %>
+                    <% else %>
+                    <a class="navbar-brand" <%= link_to 'Home', '/main/index' %> </a>
+            <% end %>
+        <% end %>
         </a>
 
     </div>

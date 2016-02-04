@@ -1,4 +1,9 @@
-<h1>Sign in</h1>
+<%= render 'layouts/header' %>
+<%= render 'layouts/navbar' %>
+
+<div class="jumbotron text-center ">
+  <h2>Login</h2>
+</div>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
 
@@ -20,4 +25,16 @@
 </P>
 <% end %>
 
-<p> New user? <%= link_to "Sign up now!", signup_path %> </p>
+<p> New? <%= link_to "Sign up now!", signup_path %> </p>
+
+<style>
+.jumbotron {
+    background-color: #6495ed;
+    color: #ffffff;
+    padding-top: 40px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: Montserrat, sans-serif;
+}
+</style>
