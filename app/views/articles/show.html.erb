@@ -10,25 +10,26 @@
     <div class = "col-sm-3">
     </div>
     <div class = "col-sm-6 articles">
-      <h6> <span class="glyphicon glyphicon-user"></span>
+      <%= @article.text %>
+    </br>
+      <h6 class= "pull-right"> <span class="glyphicon glyphicon-user"></span>
             Written by <%= @article.author %> </h6>
-            <hr>
-  <%= @article.text %>
-</p>
+          </br>
+      <hr>
+      <h5>Comments:</h5>
+      <%= render @article.comments %>
+      <hr>
 
-<p>
-  <strong>Author: </strong>
-  <%= @article.author %>
-</p>
+      <h5>Add a comment:</h5>
+      <%= render 'comments/form' %>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
-
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+      <%= link_to articles_path do %>
+        <span class="glyphicon glyphicon-arrow-left"></span>
+      <% end %> |
+      <%= link_to edit_article_path(@article) do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+    </div>
 
 <style>
 .centered{
@@ -41,6 +42,9 @@
     padding-bottom: 5px;
     padding-left: 25px;
     padding-right: 25px;
-    font-family: Montserrat, sans-serif;
+    font-family: Lato, sans-serif;
+}
+.articles{
+  font-family: Lato;
 }
 </style>
