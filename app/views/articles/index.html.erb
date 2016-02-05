@@ -6,9 +6,6 @@
   <h2>Archive</h2>
 </div>
 
-<h1> </h1>
-
-
   <div class="container-fluid bg-grey">
     <div class="row">
       <div class = "col-sm-3">
@@ -20,29 +17,30 @@
       <% @articles.each do |article| %>
         <h2> <strong> <%= article.title %></strong> </h2>
           <h4><%= article.text %></h5>
-          <h6> <span class="glyphicon glyphicon-pencil"></span>
+          <h6> <span class="glyphicon glyphicon-user"></span>
                 Written by <%= article.author %> </h6>
-          <p><%= link_to 'View', article_path(article) %> |
-             <%= link_to 'Edit', edit_article_path(article) %> |
-             <%= link_to 'Remove', article_path(article),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></p>
-        </tr>
+          <p>
+            <%= link_to article_path(article) do %>
+              <span class="glyphicon glyphicon-eye-open"></span>
+            <% end %> |
+            <%= link_to edit_article_path(article) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %> |
+            <%= link_to article_path(article), method: :delete,
+                data: {confirm: 'Are you sure?'} do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </p>
         <hr>
       <% end %>
-      </table >
       </div>
       <div class = "col-sm-3">
       </div>
     </div>
+    <div class = "col-sm-3">
+    </div>
+    <%= link_to 'New article', new_article_path %>
   </div>
-
-  <div class = "col-sm-3">
-  </div>
-
-
-
-<%= link_to 'New article', new_article_path %>
 
 <style>
 .centered{
