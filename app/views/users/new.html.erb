@@ -10,16 +10,17 @@
 
   <% if @user.errors.any? %>
   <p>
-    <h2> <%= pluralize(@user.errors.count, "error") %>
-      prohibited this user from being saved: </h2>
-      <p> There were problems with the following fields: </p>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <h2><%= pluralize(@user.errors.count, "error") %>
+            prohibited this user from being saved: </h2>
+          <p>There were problems with the following fields: </p>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </ul>
   </p>
-  <% end %>
+<% end %>
 
 <div class="container-fluid bg-grey">
   <h2 class="text-center">Account information</h2>
@@ -41,8 +42,8 @@
             <div class="col-sm-6 form-group">
               <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password confirmation", required: true %>
             </div>
-            <div class = "centered">
-              <%= f.submit "Sign up", class: "btn btn-default btn-large" %>
+            <div class = "col-sm-4 col-sm-offset-4">
+              <%= f.submit "Sign up", class: "btn btn-info btn-default btn-block" %>
             </div>
       <% end %>
           </div>
@@ -51,7 +52,6 @@
         </div>
   </div>
 </div>
-<% end %>
   <style>
   .centered{
       text-align:center;

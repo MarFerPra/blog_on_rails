@@ -1,6 +1,10 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
+<% flash.each do |key, value| %>
+  <p>  <%= value %> </p>
+<% end %>
+
 <div class="jumbotron text-center ">
   <h2>Login</h2>
 </div>
@@ -11,50 +15,28 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
-          <div class="row">
+      <%= form_for(:session, :url => sessions_path) do |f| %>
+          <div class="row centered">
             <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-            </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                <%= f.text_field :email, class: "form-control", placeholder: "Email", required: true %>
             </div>
             <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="name" placeholder="Password" type="text" required>
-            </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Password Confirmation" type="email" required>
+              <%= f.password_field :password, class: "form-control", placeholder: "Password", required: true %>
             </div>
             </div>
-              <div class="col-sm-6 center-block">
-                <button class="btn btn-default" type="submit">Send</button>
+              <div class="col-sm-4 col-sm-offset-4  ">
+                <%= f.submit "Sign in", class: "btn btn-info btn-default btn-block" %>
               </div>
+              <% end %>
+            </br> </br>
+              <h4> New? <%= link_to "Sign up now!", signup_path %> </h4>
           </div>
         </div>
         <div class="col-sm-3">
         </div>
   </div>
 </div>
-    <%= form_for(:session, :url => sessions_path) do |f| %>
 
-<% flash.each do |key, value| %>
-  <p>  <%= value %> </p>
-<% end %>
-
-<p>
-  <%= f.label :email %> <br/>
-  <%= f.text_field :email %>
-</p>
-
-<p>
-  <%= f.label :password %> <br />
-  <%= f.password_field :password %>
-</p>
-<p>
-  <%= f.submit "Sign in" %>
-</P>
-<% end %>
-
-<p> New? <%= link_to "Sign up now!", signup_path %> </p>
 
 <style>
 .jumbotron {
