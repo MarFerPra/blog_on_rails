@@ -1,12 +1,29 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    Author: <%= f.text_field :commenter %>
+  <p> <% if current_user.nil? %>
+    <%= f.text_field :commenter, class: "form-control commenter_name", placeholder:"Your name", required: true %>
+    <% else %>
+      Logged in as <%= current_user.name %>
+    <% end %>
   </p>
   <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "form-control comment_text", placeholder: "Whatever you have to say", required: true %>
   </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <div class = "col-sm-4 col-sm-offset-4">
+      <%= f.submit "Post comment", class: "btn btn-info btn-default btn-block" %>
+    </div>
 <% end %>
+
+<%= render 'layouts/footer' %>
+
+<style>
+.commenter_name{
+  resize: both;
+  width: 120px;
+  min-width: 120px;
+}
+.comment_text{
+  resize: horizontal;
+  height:200px;
+  min-height:100px;
+}
+</style>
