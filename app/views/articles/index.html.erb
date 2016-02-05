@@ -14,7 +14,7 @@
       <div class = "col-sm-3">
       </div>
 
-      <div class = "col-sm-6">
+      <div class = "col-sm-6 articles">
         <h4><small>RECENT POSTS</small></h4>
         <hr>
       <% @articles.each do |article| %>
@@ -22,11 +22,11 @@
           <h4><%= article.text %></h5>
           <h6> <span class="glyphicon glyphicon-pencil"></span>
                 Written by <%= article.author %> </h6>
-          <td><%= link_to 'View', article_path(article) %></td>
-          <td><%= link_to 'Edit', edit_article_path(article) %> </td>
-          <td><%= link_to 'Remove', article_path(article),
+          <p><%= link_to 'View', article_path(article) %> |
+             <%= link_to 'Edit', edit_article_path(article) %> |
+             <%= link_to 'Remove', article_path(article),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+                  data: { confirm: 'Are you sure?' } %></p>
         </tr>
         <hr>
       <% end %>
@@ -56,5 +56,8 @@
     padding-left: 25px;
     padding-right: 25px;
     font-family: Montserrat, sans-serif;
+}
+.articles {
+  font-family: Lato;
 }
 </style>
