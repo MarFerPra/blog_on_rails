@@ -7,7 +7,15 @@
 
 <div class="container-fluid bg-grey">
   <div class="row">
-    <div class = "col-sm-3">
+    <div class = "col-sm-3 articles ">
+      <% if !current_user.nil? %>
+      <div class = "col-sm-offset-2">
+
+      <%= link_to raw("<span class = \"glyphicon glyphicon-edit\"></span> Write new article "),
+          new_article_path,
+          class: "btn btn-lg btn-info btn-default" %>
+      </div>
+      <% end %>
     </div>
     <div class = "col-sm-6 articles">
       <%= @article.text %>
@@ -16,7 +24,7 @@
             Written by <%= @article.author %> </h6>
           </br>
       <hr>
-      <h5>Comments:</h5>
+      <h5><strong> Comments: </strong></h5>
       <%= render @article.comments %>
       <hr>
 
@@ -42,7 +50,7 @@
     padding-bottom: 5px;
     padding-left: 25px;
     padding-right: 25px;
-    font-family: Lato, sans-serif;
+    font-family: Lato;
 }
 .articles{
   font-family: Lato;
