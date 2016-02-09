@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Articles', '/articles' %></li>
         <li><%= link_to 'Profile', '/profile' %></li>
-        <li><a href="/users">Team</a></li>
+        <li><a href="/users">Team</a> </li>
         <li> <% if current_user.nil? %>
                 <%= link_to 'Log in', '/login' %>
                 <% else %>
