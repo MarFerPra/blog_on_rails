@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'main#index'
-  
+
   get 'sessions/new'
 
   get 'users/new'
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/login', :to => 'sessions#new'
   get '/logout', :to => 'sessions#destroy'
   get '/sessions', :to => 'sessions#new'
+  get '/team', :to => 'users#index'
+  get '/profile', :to => 'users#show'
 
   resources :articles do
     resources :comments

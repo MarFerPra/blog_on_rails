@@ -42,7 +42,7 @@
 
 
         <a class="navbar-brand"
-        <% if '/main/index' == request.env['PATH_INFO'] %>
+        <% if '/main/index' == request.env['PATH_INFO'] && current_user.nil? %>
           <%= link_to 'New? Sign up!', '/signup' %>
           <% else %>
             <% if !current_user.nil? %>
@@ -57,9 +57,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/articles">Articles</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/users">Users</a></li>
+        <li><%= link_to 'Articles', '/articles' %></li>
+        <li><%= link_to 'Profile', '/profile' %></li>
+        <li><a href="/users">Team</a></li>
         <li> <% if current_user.nil? %>
                 <%= link_to 'Log in', '/login' %>
                 <% else %>
