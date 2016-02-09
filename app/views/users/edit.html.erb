@@ -1,15 +1,14 @@
-
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
 <div class="jumbotron text-center ">
-  <h2>Sign up</h2>
+  <h2>Edit profile</h2>
 </div>
 
 <%= render 'error_form' %>
 
 <div class="container-fluid bg-grey">
-  <h2 class="text-center">Account information</h2> <hr>
+  <h2 class="text-center">Edit profile</h2> <hr>
   <div class="row">
     <div class="col-sm-3">
     </div>
@@ -29,7 +28,7 @@
               <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password confirmation", required: true %>
             </div>
             <div class = "col-sm-4 col-sm-offset-4">
-              <%= f.submit "Sign up", class: "btn btn-info btn-default btn-block" %>
+              <%= f.submit "Update profile", class: "btn btn-info btn-default btn-block" %>
             </div>
       <% end %>
           </div>
