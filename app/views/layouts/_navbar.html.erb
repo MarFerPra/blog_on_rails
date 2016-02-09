@@ -1,23 +1,23 @@
 <style>
 .navbar {
-    margin-bottom: 0;
-    background-color: #00bfff;
-    z-index: 9999;
-    border: 0;
-    font-size: 15px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 4px;
-    border-radius: 0;
-    font-family: Montserrat, sans-serif;
+  margin-bottom: 0;
+  background-color: #00bfff;
+  z-index: 9999;
+  border: 0;
+  font-size: 15px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  font-family: Montserrat, sans-serif;
 }
 
 .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #00bfff !important;
-    background-color: #fff !important;
+  color: #00bfff !important;
+  background-color: #fff !important;
 }
 
 .navbar-default .navbar-toggle {
@@ -46,7 +46,7 @@
           <%= link_to 'New? Sign up!', '/signup' %>
           <% else %>
             <% if !current_user.nil? %>
-                    <% link = "Welcome, "+current_user.name %>
+                    <% link = "Welcome, "+ current_user.name %>
                     <%= link_to link, '/' %>
                     <% else %>
                     <a class="navbar-brand" <%= link_to 'Home', '/main/index' %> </a>
@@ -58,8 +58,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Articles', '/articles' %></li>
-        <li><%= link_to 'Profile', '/profile' %></li>
         <li><a href="/users">Team</a> </li>
+        <li><% if !current_user.nil? %>
+            <%= link_to 'Profile', user_path(current_user) %></li>
+            <% end %> </li>
         <li> <% if current_user.nil? %>
                 <%= link_to 'Log in', '/login' %>
                 <% else %>
