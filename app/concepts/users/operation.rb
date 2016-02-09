@@ -53,6 +53,7 @@ class User::Update < Trailblazer::Operation
   end
 end
 
+# Something here is broken
 class User::Authenticate < Trailblazer::Operation
   attr_accessor :user
 
