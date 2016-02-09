@@ -3,7 +3,7 @@
     <%= f.text_field :commenter, class: "form-control commenter_name", placeholder:"Your name", required: true %>
     <% else %>
       Logged in as <%= current_user.name %>
-      <% # TODO: change method commment.new to add current user as author if :commenter is empty!! %>
+      <%= f.hidden_field(:commenter, :value => current_user.name) %>
     <% end %>
   </p>
   <p>
