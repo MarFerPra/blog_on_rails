@@ -22,9 +22,9 @@
         <h4><small>RECENT POSTS</small></h4>
         <hr>
       <% @articles.each do |article| %>
-        <h2> <strong> <%= article.title %></strong> </h2>
-          <h4><%= article.text %></h5>
-          <h6> <span class="glyphicon glyphicon-user"></span>
+        <h2> <strong> <%= article.title %> </strong> </h2>
+          <h4> <%= article.text %> </h4>
+          <h6> <span class="glyphicon glyphicon-user"> </span>
                 Written by <%= article.author %> </h6>
           <p>
             <%= link_to article_path(article) do %>

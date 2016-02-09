@@ -1,10 +1,27 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
-<h1>New article</h1>
+<div class="jumbotron text-center ">
+  <h2>New article</h2>
+</div>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', articles_path %>
 
 <%= render 'layouts/footer' %>
+
+  <style>
+  .centered{
+      text-align:center;
+  }
+  .jumbotron {
+      background-color: #6495ed;
+      color: #ffffff;
+      padding-top: 40px;
+      padding-bottom: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+      font-family: Lato, sans-serif;
+  }
+  </style>

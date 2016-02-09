@@ -1,5 +1,4 @@
 <%= form_for @article do |f| %>
-
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -14,22 +13,32 @@
     </div>
   <% end %>
 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
+  <div class="container-fluid bg-grey">
+    <div class="row">
+      <div class = "col-sm-3 articles ">
+      </div>
 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
+      <div class = "col-sm-6">
+        <p><%= f.text_field :title, class: "form-control", placeholder: "Title", required: true %></p>
+        <p><%= f.text_area :text, class: "form-control article_text", placeholder: "New article...", required: true %></p>
+        <p><%= f.hidden_field(:author, :value => current_user.name) %></p>
 
-  <p>
-    <%= f.label :author %> <%= f.text_field :author %>
-  </p>
+        <div class = "col-sm-4 col-sm-offset-4">
+          <%= f.submit "Post article", class: "btn btn-info btn-default btn-block" %>
+        </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+      </div>
 
+      <div class = "col-sm-3">
+      </div>
+
+    </div>
+  </div>
 <% end %>
+
+<style>
+.article_text{
+  resize: horizontal;
+  height:500px;
+  min-height:250px;
+}
