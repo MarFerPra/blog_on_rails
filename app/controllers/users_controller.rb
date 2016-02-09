@@ -37,4 +37,10 @@ class UsersController < ApplicationController
     render 'new'
   end
 
+  def update
+    run User::Update do |op|
+      return redirect_to( op.user )
+    end
+  end
+
 end

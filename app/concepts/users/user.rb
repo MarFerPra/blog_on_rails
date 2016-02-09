@@ -32,6 +32,14 @@ class User < ActiveRecord::Base
    (user && user.salt == cookie_salt) ? user : nil
  end
 
+ def update_params(updated)
+   self.name = updated[:name]
+   self.email = updated[:email]
+   self.password = updated[:password]
+   encrypt_password
+ end
+
+
  #TODO: make salt atrib. private eventually.
 
 # Untrailblazable
