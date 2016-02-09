@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def create
     run User::Create do |op|
       sign_in op.user

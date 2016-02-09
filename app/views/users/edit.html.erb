@@ -13,7 +13,7 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
-      <%= form_for @user do |f| %>
+      <%= form_for current_user do |f| %>
           <div class="row">
             <div class="col-sm-6 form-group">
               <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
@@ -22,7 +22,7 @@
               <%= f.text_field :email, class: "form-control", placeholder:"Email address", required: true %>
             </div>
             <div class="col-sm-6 form-group">
-              <%= f.password_field :password, class: "form-control", placeholder: "Password", required: true %>
+              <%= f.password_field :password, class: "form-control", placeholder: "New password", required: true %>
             </div>
             <div class="col-sm-6 form-group">
               <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password confirmation", required: true %>
