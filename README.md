@@ -10,7 +10,7 @@
 
 (Check `Gemfile` for information about the gemset.)
 
-## On branch "trailblazer" (now default branch - the one you're seeing right now):
+#### On branch "trailblazer" (now default branch - the one you're seeing right now):
 
 Here you can check the migration of the project to Trailblazer's architecture.
 Gemfile has been modified with:
