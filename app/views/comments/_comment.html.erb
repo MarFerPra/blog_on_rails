@@ -3,11 +3,13 @@
 </p>
 
 <p>
-  - <%= comment.commenter %> [
-
-  <%= link_to [comment.article, comment], method: :delete,
-      data: {confirm: 'Are you sure?'} do %>
-        <span class="glyphicon glyphicon-trash"></span>
+  - <%= comment.commenter %>
+  <% if !current_user.nil? %>
+    <% if current_user.canEdit?(comment) %>
+        [<%= link_to [comment.article, comment], method: :delete,
+          data: {confirm: 'Are you sure?'} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+      <% end %>]
+    <% end %>
   <% end %>
-  ]
 </p>

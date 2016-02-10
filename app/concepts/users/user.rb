@@ -25,9 +25,12 @@ class User < ActiveRecord::Base
      return true if(self.email == param.email || self.isAdmin? )
    elsif param.is_a? Article
      return true if(param.author == self.name || self.isAdmin? )
+   elsif param.is_a? Comment
+     return true if(param.commenter == self.name || self.isAdmin? )
    end
  end
 
+ # Should change this - eventually - to allow multiple admins.
  def isAdmin?
    return true if (self.name == "admin" && self.email == "admin@admin.xyz")
  end
