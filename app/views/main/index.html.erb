@@ -6,6 +6,27 @@
   <p>Marco's awesome blog</p>
 </div>
 
+<div class="container-fluid bg-grey">
+   <hr>
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <img src="/images/careto.jpg" class="image img-responsive center-block img-circle" alt="It's me... Marco!">
+    </div>
+    <div class="col-sm-3 desc">
+    </br>
+      <p> Hey! Welcome to my site. </p>
+      <p> Yeah... I know, it makes no sense to have Sign up's and stuff on a personal blog.
+      <p> But at least I didn't build an <a href="http://gadgets.ndtv.com/others/news
+        /samsungs-t9000-smart-refrigerator-runs-on-android-includes-apps-like-evernote-and-
+        epicurious-320610"> Android Refrigerator</a>.</p>
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+</div>
+
 <style>
 .main_title{
   color:#fff;
@@ -23,11 +44,15 @@
     padding-bottom: 20px;
     padding-left: 25px;
     padding-right: 25px;
-    font-family: Montserrat, sans-serif;  
+    font-family: Montserrat, sans-serif;
+}
+.desc{
+  font-family: Montserrat;
+}
+.image {
+    width: 70%;
+    height: 70%;
 }
 </style>
-
-<%= link_to 'Archive', controller: 'articles' %>
-<%= link_to 'Sign up', controller: 'users' %>
 
 <%= render 'layouts/footer' %>
