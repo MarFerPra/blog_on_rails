@@ -1,42 +1,48 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
-<div class="jumbotron text-center ">
-  <h2>Edit profile</h2>
-</div>
+<% if( !current_user.nil? && current_user.canEdit?(@user))%>
 
-<%= render 'error_form' %>
-
-<div class="container-fluid bg-grey">
-  <h2 class="text-center">Edit profile</h2> <hr>
-  <div class="row">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-6">
-      <%= form_for @user do |f| %>
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
-            </div>
-            <div class="col-sm-6 form-group">
-              <%= f.text_field :email, class: "form-control", placeholder:"Email address", required: true %>
-            </div>
-            <div class="col-sm-6 form-group">
-              <%= f.password_field :password, class: "form-control", placeholder: "New password", required: true %>
-            </div>
-            <div class="col-sm-6 form-group">
-              <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password confirmation", required: true %>
-            </div>
-            <div class = "col-sm-4 col-sm-offset-4">
-              <%= f.submit "Update profile", class: "btn btn-info btn-default btn-block" %>
-            </div>
-      <% end %>
-          </div>
-        </div>
-        <div class="col-sm-3">
-        </div>
+  <div class="jumbotron text-center ">
+    <h2>Edit profile</h2>
   </div>
-</div>
+
+  <%= render 'error_form' %>
+
+  <div class="container-fluid bg-grey">
+    <h2 class="text-center">Edit profile</h2> <hr>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <%= form_for @user do |f| %>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
+              </div>
+              <div class="col-sm-6 form-group">
+                <%= f.text_field :email, class: "form-control", placeholder:"Email address", required: true %>
+              </div>
+              <div class="col-sm-6 form-group">
+                <%= f.password_field :password, class: "form-control", placeholder: "New password", required: true %>
+              </div>
+              <div class="col-sm-6 form-group">
+                <%= f.password_field :password_confirmation, class:"form-control", placeholder:"Password confirmation", required: true %>
+              </div>
+              <div class = "col-sm-4 col-sm-offset-4">
+                <%= f.submit "Update profile", class: "btn btn-info btn-default btn-block" %>
+              </div>
+        <% end %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+          </div>
+    </div>
+  </div>
+
+<% else %>
+  <%= render 'layouts/access_denied' %>
+<% end %>
 
 <%= render 'layouts/footer' %>
 

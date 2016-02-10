@@ -1,20 +1,26 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/navbar' %>
 
-<div class="jumbotron text-center ">
-  <h2>Edit article</h2>
-</div>
+<% if( !current_user.nil? && current_user.canEdit?(@article))%>
 
-<%= render 'form' %>
+  <div class="jumbotron text-center ">
+    <h2>Edit article</h2>
+  </div>
 
-<p>
-  <strong>Author: </strong>
-  <%= @article.author %>
-</p>
+  <%= render 'form' %>
 
-<%= link_to 'Back', articles_path %>
+  <p>
+    <strong>Author: </strong>
+    <%= @article.author %>
+  </p>
 
-<%= render 'layouts/footer' %>
+  <%= link_to 'Back', articles_path %>
+
+  <%= render 'layouts/footer' %>
+
+<% else %>
+  <%= render 'layouts/access_denied' %>
+<% end %>
 
 <style>
 .centered{
