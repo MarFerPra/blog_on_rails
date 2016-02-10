@@ -20,8 +20,12 @@ class User < ActiveRecord::Base
 # Callback -> No need, since im not using trailblazer architecture on auth.
  before_save :encrypt_password
 
- def canEdit?(user)
-   return true if(self.email == user.email || self.isAdmin? )
+ def canEdit?(param)
+   if param.is_a? User
+     return true if(self.email == param.email || self.isAdmin? )
+   elsif param.is_a? Article
+     return true if(param.author == self.name || self.isAdmin? )
+   end
  end
 
  def isAdmin?

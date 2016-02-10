@@ -29,13 +29,17 @@
           <p>
             <%= link_to article_path(article) do %>
               <span class="glyphicon glyphicon-eye-open"></span>
-            <% end %> |
-            <%= link_to edit_article_path(article) do %>
-              <span class="glyphicon glyphicon-edit"></span>
-            <% end %> |
-            <%= link_to article_path(article), method: :delete,
-                data: {confirm: 'Are you sure?'} do %>
-                  <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+            <% if !current_user.nil? %>
+              <% if current_user.canEdit?(article) %>
+                | <%= link_to edit_article_path(article) do %>
+                  <span class="glyphicon glyphicon-edit"></span>
+                <% end %> |
+                <%= link_to article_path(article), method: :delete,
+                    data: {confirm: 'Are you sure?'} do %>
+                      <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+              <% end %>
             <% end %>
           </p>
         <hr>

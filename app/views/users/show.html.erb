@@ -26,12 +26,15 @@
       <p> <strong> Encrypted password: </strong>
         <%= @user.encrypted_password %> </p>
 
-
-        <%= link_to user_path do %>
+        <%= link_to users_path do %>
           <span class="glyphicon glyphicon-arrow-left"></span>
-        <% end %> |
-        <%= link_to edit_user_path(@user) do %>
-          <span class="glyphicon glyphicon-edit"></span>
+        <% end %>
+        <% if !current_user.nil? %>
+          <% if current_user.canEdit?(@user) %>
+            | <%= link_to edit_user_path(@user) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+          <% end %>
         <% end %>
     </div>
     <div class="col-sm-3">
