@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
 # Callback -> No need, since im not using trailblazer architecture on auth.
  before_save :encrypt_password
 
+ def canEdit?(user)
+   return true if(self.email == user.email || self.isAdmin? )
+ end
+
+ def isAdmin?
+   return true if (self.name == "admin" && self.email == "admin@admin.xyz")
+ end
+
  # True if submitted password matches user's hashed password
  def has_password?(submitted_password)
    self.encrypted_password == encrypt(submitted_password)

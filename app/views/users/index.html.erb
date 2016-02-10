@@ -17,13 +17,17 @@
           <p><%= user.email %></p>
           <%= link_to user_path(user) do %>
             <span class="glyphicon glyphicon-user"></span>
-          <% end %> |
-          <%= link_to edit_user_path(user) do %>
-            <span class="glyphicon glyphicon-edit"></span>
-          <% end %> |
-          <%= link_to user_path(user), method: :delete,
-              data: {confirm: 'Are you sure?'} do %>
-                <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          <% if !current_user.nil? %>
+            <% if current_user.canEdit?(user) %>
+              | <%= link_to edit_user_path(user) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+              <% end %> |
+              <%= link_to user_path(user), method: :delete,
+                  data: {confirm: 'Are you sure?'} do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            <% end %>
           <% end %>
       </div>
       <% end %>
