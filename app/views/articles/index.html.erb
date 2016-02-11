@@ -8,14 +8,12 @@
 
   <div class="container-fluid bg-grey">
     <div class="row">
-      <div class = "col-sm-3 articles">
+      <div class = "col-sm-3 articles centered">
         <% if !current_user.nil? %>
-        <div class = "col-sm-offset-2">
-          <%= link_to raw("<span class = \"glyphicon glyphicon-edit\"></span> Write new article "),
+        <p>  <%= link_to raw("<span class = \"glyphicon glyphicon-edit\"></span> Write new article "),
               new_article_path,
-              class: "btn btn-lg btn-info btn-default" %>
-        </div>
-        <% end %>
+              class: "btn btn-lg btn-info btn-default" %> </br>
+        <% end %> </p>
         <%= render 'layouts/publicidad_izquierda' %>
       </div>
 
