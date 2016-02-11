@@ -3,18 +3,11 @@
 
 <% if( !current_user.nil? && current_user.canEdit?(@article))%>
 
-  <div class="jumbotron text-center ">
+  <div class="jumbotron text-center">
     <h2>Edit article</h2>
   </div>
 
   <%= render 'form' %>
-
-  <p>
-    <strong>Author: </strong>
-    <%= @article.author %>
-  </p>
-
-  <%= link_to 'Back', articles_path %>
 
   <%= render 'layouts/footer' %>
 
@@ -26,13 +19,13 @@
 .centered{
     text-align:center;
 }
-.jumbotron {
+.jumbotron{
     background-color: #6495ed;
     color: #ffffff;
     padding-top: 40px;
     padding-bottom: 5px;
     padding-left: 25px;
     padding-right: 25px;
-    font-family: Lato, sans-serif;
+    font-family: Montserrat;
 }
 </style>
