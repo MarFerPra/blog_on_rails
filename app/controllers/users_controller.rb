@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     run User::Create do |op|
       sign_in op.user
       return redirect_to (op.user)
+      @user = op.user
     end
     render 'new'
   end

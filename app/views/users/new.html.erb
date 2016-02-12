@@ -6,10 +6,9 @@
   <h2>Sign up</h2>
 </div>
 
- <%#= render partial: 'users/error_form', :locals => { :user => @user } %>
-
 <div class="container-fluid bg-grey">
   <h2 class="text-center">Account information</h2> <hr>
+  <%= render partial: 'shared/error_form', :locals => {  :user => @user } %>
   <div class="row">
     <div class="col-sm-3">
       <%= render 'layouts/publicidad_izquierda' %>
