@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'react-rails', '1.6.0'
+
 gem "trailblazer"
 gem "trailblazer-rails"
 gem "cells"
