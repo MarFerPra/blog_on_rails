@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+#### gemas adicionales para el tutorial de react on rails ####
+
+gem 'bootstrap-sass'
+    gem 'autoprefixer-rails'
+
+###################################################################
+
 gem 'react-rails', '1.6.0'
+
 
 gem "trailblazer"
 gem "trailblazer-rails"
@@ -40,7 +48,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'annotate'
 end
 
 group :development do

@@ -23,6 +23,10 @@
           </br>
       <hr>
       <h5><strong> Comments: </strong></h5>
+      <% if !@article.comments.nil? %>
+      <p> Comentarios NO son NIL </p>
+      <% end %>
+      <%= react_component 'Comment', {data: @article.comments} %>
       <%= render @article.comments %>
       <hr>
 
