@@ -1,12 +1,5 @@
 source 'https://rubygems.org'
 
-#### gemas adicionales para el tutorial de react on rails ####
-
-gem 'bootstrap-sass'
-    gem 'autoprefixer-rails'
-
-###################################################################
-
 gem 'react-rails', '1.6.0'
 
 
