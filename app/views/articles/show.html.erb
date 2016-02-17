@@ -26,7 +26,7 @@
       <% if !@article.comments.nil? %>
       <p> Comentarios NO son NIL </p>
       <% end %>
-      <%= render partial: "shared/comments", locals:  {comments: @article.comments }  %>
+      <%= react_component 'CommentsBox', {comments: @article.comments, article_id:  @article.id} %>
       <hr>
 
       <h5>Add a comment:</h5>
