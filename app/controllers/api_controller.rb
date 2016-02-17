@@ -6,7 +6,8 @@ class ApiController < ActionController::Base
   end
 
   def comments
-    @comments = Comments.all
+    @article = Article.find(params[:id])
+    @comments = @article.comments.all
     render 'comments.json.jbuilder'
   end
 
