@@ -2,11 +2,11 @@
 var Comment = React.createClass({
   render: function(){
     return (
-      <div class="comment">
-        <p class="commentBody"> <i>
+      <div className="Comment">
+        <p> <i>
           {this.props.text}
         </i></p>
-        <h4 class="commentAuthor">
+        <h4>
           {this.props.author}
         </h4>
       </div>
@@ -15,35 +15,39 @@ var Comment = React.createClass({
 });
 
 var CommentsBox = React.createClass({
+  getInitialState: function(){
+    return {
+      data: [],
+      url: "/api/articles/"+this.props.article_id+"/comments"
+    };
+  },
 
   loadCommentsFromServer: function() {
+    console.log(this.state.url);
     $.ajax({
-      url: this.props.url,
+      url: this.state.url,
       dataType: 'json',
+      type: 'GET',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({data: data.comments});
       }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
+      error: function(xhr, status, err){
+        console.error(this.state.url, status, err.toString());
       }.bind(this)
     });
   },
 
-  getInitialState: function(){
-    return {data: []};
-  },
-
   componentDidMount: function(){
     this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, 2000);
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
 
   render: function() {
     return (
-      <div class="commentBox">
+      <div className="CommentsBox">
         <h2> Comments </h2>
-        <h3> Url is: {this.props.url} </h3>
+        <h3> Url is: {this.state.url} </h3>
         <CommentList data={this.state.data} />
       </div>
     );
@@ -54,20 +58,13 @@ var CommentList = React.createClass({
   render: function(){
     var commentNodes = this.props.data.map(function(comment){
       return (
-        <Comment author={comment.commenter} key={comment.id}>
-          {comment.body}
-        </Comment>
+        <Comment author={comment.commenter} key={comment.id} text={comment.body} />
       );
     });
     return (
-      <div class="commentList">
+      <div className="CommentList">
         {commentNodes}
       </div>
     );
   }
 });
-
-ReactDOM.render(
-  <CommentBox url={"/api/articles/"+this.props.article_id+"/comments"} />,
-  document.getElementById('content')
-);

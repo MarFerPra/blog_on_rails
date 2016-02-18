@@ -3,6 +3,3 @@ json.comments do
     json.extract! comment, :commenter, :body
   end
 end
-
-json.success 'true'
-json.total_articles @comments.count
