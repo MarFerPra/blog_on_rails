@@ -4,10 +4,10 @@ var Comment = React.createClass({
     return (
       <div className="Comment">
         <p> <i>
-          {this.props.text}
+          TEXTO: {this.props.text}
         </i></p>
         <h4>
-          {this.props.author}
+          AUTOR: {this.props.author}
         </h4>
       </div>
     );
@@ -54,6 +54,7 @@ var CommentsBox = React.createClass({
   }
 });
 
+/* TODO :Not printing anything -> Polque zeño? polque? */
 var CommentList = React.createClass({
   render: function(){
     var commentNodes = this.props.data.map(function(comment){
@@ -61,7 +62,7 @@ var CommentList = React.createClass({
         <Comment author={comment.commenter} key={comment.id} text={comment.body} />
       );
     });
-    return (
+    return(
       <div className="CommentList">
         {commentNodes}
       </div>
