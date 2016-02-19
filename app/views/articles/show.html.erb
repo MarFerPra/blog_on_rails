@@ -22,11 +22,12 @@
             Written by <%= @article.author %> </h6>
           </br>
       <hr>
-      <h5><strong> Comments: </strong></h5>
-      <% if !@article.comments.nil? %>
-      <p> Comentarios NO son NIL </p>
-      <% end %>
-      <%= react_component 'CommentsBox', {comments: @article.comments, article_id:  @article.id, pollInterval: 2000} %>
+
+      <p>REACT COMPONENT </p>
+      <%= react_component 'CommentsBox',
+      {comments: @article.comments, article_id:  @article.id,
+        pollInterval: 2000} %>
+
       <hr>
 
       <h5>Add a comment:</h5>
@@ -46,6 +47,7 @@
   </div>
 </div>
 
+<%= render 'layouts/footer' %>
 
 <style>
 .centered{
@@ -62,5 +64,16 @@
 }
 .articles{
   font-family: Lato;
+}
+
+.commenter_name{
+  resize: both;
+  width: 120px;
+  min-width: 120px;
+}
+.comment_text{
+  resize: horizontal;
+  height:200px;
+  min-height:100px;
 }
 </style>
