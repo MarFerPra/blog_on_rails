@@ -17,6 +17,19 @@
         <%= render 'layouts/publicidad_izquierda' %>
       </div>
 
+<%  # No se me ocurre ninguna manera de evitar comprobar el login de un usuario
+    # del lado del servidor y servir las opciones de borrar y de edición más qué:
+    # usar un método en la api de comprobación de session y renderizar una cosa u otra
+    # en el componente react.
+%>
+
+<%  # TODO:
+    # => El índice de los articulos se presenta en orden inverso a la fecha de creacion ( no existe el campo aun )
+    # => La API de gestion de permisos tiene que comprobar en el lado del servidor si se puede o no editar o eliminar un articulo/comentario
+    # => ¿ Cambiar de paradigma ? Servidor le envia info al cliente sobre el usuario, cambia la vista en función de los permisos,
+    # => al editar/borrar se comprueba en el servidor de nuevo si los permisos son correctos.
+%>
+
       <div class = "col-sm-6 articles">
         <h4><small>RECENT POSTS</small></h4>
         <hr>

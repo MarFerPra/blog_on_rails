@@ -11,4 +11,8 @@ class ApiController < ActionController::API
     render 'comments.json.jbuilder'
   end
 
+  def isLogged?
+    
+  end
+
 end
