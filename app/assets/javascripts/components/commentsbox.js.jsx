@@ -48,58 +48,7 @@ var CommentsBox = React.createClass({
       <div className="CommentsBox">
         <h5><strong> Comments: </strong></h5>
         <CommentList data={this.state.data} />
-        <CommentForm current_user={this.props.current_user} />
       </div>
-    );
-  }
-});
-
-var CommentForm = React.createClass({
-  getInitialState: function(){
-    return {author:'', text:''};
-  },
-  handleAuthorChange: function(e){
-    this.setState({author: e.target.value});
-  },
-  handleTextChange: function(e){
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e){
-    e.preventDefault();
-    var author = this.state.author.trim();
-    var text = this.state.text.trim();
-    if(!text  || !author){
-      return;
-    }
-    this.props.onCommentSubmit({author: author, text: text});
-    this.setState({author:'', text:''});
-  },
-  render: function(){
-    return(
-      <form className="commentForm" onSubmit={this.handleSubmit}>
-        <p>
-          <input
-            type="text"
-            placeholder="Your name"
-            class="form-control commenter_name"
-            value={this.state.author}
-            onChange={this.handleAuthorChange}
-          />
-        </p>
-        <p>
-          <input
-            type="text"
-            placeholder="Whatever you have to say"
-            class="form-control comment_text"
-            value={this.state.text}
-            onChange={this.handleTextChange}
-          />
-        </p>
-        <p>
-          <input type="submit" value="Post comment"
-            class="btn btn-info btn-default btn-block"/>
-        </p>
-      </form>
     );
   }
 });
