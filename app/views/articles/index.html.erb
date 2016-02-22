@@ -36,9 +36,13 @@
         <% @articles.sort_by(&:created_at).reverse.each do |article| %>
         <h2> <strong> <%= article.title %> </strong> </h2>
           <h4> <%= article.text %> </h4>
-          <h6> <span class="glyphicon glyphicon-user"> </span>
-                Written by <%= article.author %> </h6>
-          <p>
+          <h6> <span class="glyphicon glyphicon-user"></span>
+                Written by <%= article.author %> </br>
+                <span class ="glyphicon glyphicon-time"></span>
+                <i>
+                    Created: <%= article.created_at.strftime("%d %b. %Y") %> </br>
+                </i>
+          </h6>
             <%= link_to article_path(article) do %>
               <span class="glyphicon glyphicon-eye-open"></span>
             <% end %>
