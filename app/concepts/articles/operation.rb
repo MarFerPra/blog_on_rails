@@ -6,7 +6,8 @@ class Article < ActiveRecord::Base
 
     contract do
       property :title, validates: { presence: true,
-                                 length: {minimum: 5}}
+                                 length: {minimum: 5}
+                                }
     end
 
       # OPERATION CODE GOES HERE

@@ -19,8 +19,15 @@
       <%= @article.text %>
     </br>
       <h6 class= "pull-right"> <span class="glyphicon glyphicon-user"></span>
-            Written by <%= @article.author %> </h6>
-          </br>
+            Written by <%= @article.author %> </br>
+            <span class ="glyphicon glyphicon-time"></span>
+            <i>
+                Created: <%= @article.created_at.strftime("%d %b. %Y") %> </br>
+                Last update: <%=  @article.updated_at.strftime("%d %b. %Y") %>
+            </i>
+      </h6>
+    </br>  
+    </br>
       <hr>
 
       <%= react_component 'CommentsBox',

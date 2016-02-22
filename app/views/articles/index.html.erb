@@ -33,7 +33,7 @@
       <div class = "col-sm-6 articles">
         <h4><small>RECENT POSTS</small></h4>
         <hr>
-        <% @articles.each do |article| %>
+        <% @articles.sort_by(&:created_at).reverse.each do |article| %>
         <h2> <strong> <%= article.title %> </strong> </h2>
           <h4> <%= article.text %> </h4>
           <h6> <span class="glyphicon glyphicon-user"> </span>
