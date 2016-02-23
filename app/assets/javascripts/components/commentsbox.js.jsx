@@ -7,7 +7,7 @@ var Comment = React.createClass({
           {this.props.text}
         </i></p>
         <p>
-          - {this.props.author}
+            - {this.props.author} ({this.props.created_at})
         </p>
       </div>
     );
@@ -57,7 +57,7 @@ var CommentList = React.createClass({
   render: function(){
     var commentNodes = this.props.data.map(function(comment){
       return (
-        <Comment author={comment.commenter} key={comment.id} text={comment.body} />
+        <Comment author={comment.commenter} key={comment.id} text={comment.body} created_at={comment.created_at} />
       );
     });
     return(
