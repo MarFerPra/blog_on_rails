@@ -26,6 +26,13 @@
         <div class = "col-sm-4 col-sm-offset-4">
           <%= f.submit "Post article", class: "btn btn-info btn-default btn-block" %>
         </div>
+        <div class="col-sm-12">
+        </div>
+        <div class="col-sm-4">
+          <%= link_to articles_path do %>
+            <span class="glyphicon glyphicon-arrow-left"></span>
+          <% end %>
+        </div>
       </div>
 
       <div class = "col-sm-3">

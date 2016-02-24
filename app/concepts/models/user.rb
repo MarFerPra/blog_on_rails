@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
    end
  end
 
- # Should change this - eventually - to allow multiple admins.
+ # Should change this - eventually.
  def isAdmin?
    return true if (self.name == "admin" && self.email == "admin@admin.xyz")
  end
